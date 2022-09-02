@@ -47,7 +47,8 @@
         height: 2820px;
     }
 
-    .Men-Women {
+    .Men-Women,
+    .current-deal {
         width: 100%;
         margin: 0;
     }
@@ -69,7 +70,8 @@
         justify-content: space-between;
     }
 
-    .Men-Women .men-title h2 {
+    .Men-Women .men-title h2,
+    .current-deal h2 {
         font-size: 2rem;
     }
 
@@ -79,7 +81,7 @@
         text-align: center;
     }
 
-    .Men-Women .line {
+    .line {
         display: none;
     }
 
@@ -193,5 +195,27 @@
     .mens-bottom .box3 p,
     .mens-bottom .box4 p {
         width: 200px !important;
+    }
+
+
+
+
+
+
+
+
+    .current-deal{
+        width: 100%;
+    }
+
+    .current-deal .mens-top{
+        margin: 60px 0;
+        justify-content: center;
+    }
+
+    .current-deal .content{
+        width: 90% !important;
+        margin: 0 auto;
+        padding-top: 0;
     }
 }

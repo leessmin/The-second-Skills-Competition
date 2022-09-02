@@ -171,13 +171,23 @@ body {
 
 
 
-.Men-Women {
+
+
+
+
+
+
+
+
+
+.Men-Women,
+.current-deal {
     width: 70%;
     margin: 0 auto;
     margin-top: 80px;
 }
 
-.Men-Women .mens-top {
+.mens-top {
     /* width: 80%; */
     height: 50px;
     /* background-color: aqua; */
@@ -186,12 +196,12 @@ body {
     align-items: center;
 }
 
-.Men-Women .men-title p {
+.men-title p {
     font-size: 14px;
     color: #8f8f8f;
 }
 
-.Men-Women .line {
+.line {
     width: auto;
     height: 2px;
     flex: 1;
@@ -390,3 +400,101 @@ body {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.current-deal {
+    /* background-color: aqua; */
+}
+
+.current-deal .content {
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-deal .content .left {
+    width: 50%;
+}
+
+.current-deal .content .left .top {
+    height: auto;
+    /* background: skyblue; */
+    margin-bottom: 50px;
+}
+
+.current-deal .content .left .top h3,
+.current-deal .content .left .top p {
+    margin-bottom: 15px;
+}
+
+.current-deal .content .left .top .line-through-span {
+    color: #ccc;
+}
+
+.current-deal .content .left .top .btn {
+    width: 120px;
+    height: 40px;
+    border: 2px solid red;
+    box-sizing: border-box;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.current-deal .content .left .top .btn:hover {
+    color: white;
+    background-color: red;
+}
+
+.current-deal .content .bottom {
+    width: 100%;
+}
+
+.current-deal .content .bottom .content {
+    width: 100%;
+    height: 160px;
+    background-color: #ccc;
+    margin-top: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.current-deal .content .bottom .content .box01,
+.current-deal .content .bottom .content .box02,
+.current-deal .content .bottom .content .box03,
+.current-deal .content .bottom .content .box04 {
+    width: 24%;
+    height: 95%;
+    text-align: center;
+}
+
+.current-deal .content .bottom .content .box01 .box,
+.current-deal .content .bottom .content .box02 .box,
+.current-deal .content .bottom .content .box03 .box,
+.current-deal .content .bottom .content .box04 .box {
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}

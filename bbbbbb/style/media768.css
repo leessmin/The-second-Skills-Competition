@@ -15,10 +15,15 @@
 
 
 
-    .Men-Women {
-        width: 95%;
+    .Men-Women,
+    .current-deal {
+        width: 90%;
         margin: 0 auto;
         margin-top: 0px;
+    }
+
+    .Men-Women {
+        margin-bottom: 50px;
     }
 
     .mens-middle {
@@ -87,5 +92,47 @@
     .mens-middle .top .box1 .left .left-right .content,
     .mens-middle .top .box1 .left .left-right .content01 {
         margin-top: 20px;
+    }
+
+
+
+
+
+
+    .current-deal .content {
+        flex-direction: column;
+    }
+
+    .current-deal .content .left {
+        width: 100%;
+        ;
+    }
+
+    .current-deal .content .left .top .line-through-span {
+        color: black;
+    }
+
+    .current-deal .content .left .top .btn {
+        margin-top: 20px;
+    }
+
+    .current-deal .content .bottom .content {
+        flex-direction: unset;
+        background-color: #eeeeee;
+    }
+
+    .current-deal .content .bottom .content .box01,
+    .current-deal .content .bottom .content .box02,
+    .current-deal .content .bottom .content .box03,
+    .current-deal .content .bottom .content .box04 {
+        width: 22%;
+        height: 85%;
+        text-align: center;
+    }
+
+    .current-deal .content .right {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
     }
 }
