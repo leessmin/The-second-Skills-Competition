@@ -16,7 +16,8 @@
 
 
     .Men-Women,
-    .current-deal {
+    .current-deal,
+    .popular-products {
         width: 90%;
         margin: 0 auto;
         margin-top: 0px;
@@ -134,5 +135,17 @@
         margin-top: 20px;
         width: 100%;
         text-align: center;
+    }
+
+
+
+
+
+
+
+
+    /* 全局  中尺寸显示 */
+    .ms-display {
+        display: inline;
     }
 }

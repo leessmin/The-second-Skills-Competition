@@ -181,7 +181,8 @@ body {
 
 
 .Men-Women,
-.current-deal {
+.current-deal,
+.popular-products {
     width: 70%;
     margin: 0 auto;
     margin-top: 80px;
@@ -497,4 +498,116 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+}
+
+
+
+
+
+
+.popular-products {
+    margin-top: 0;
+}
+
+.popular-products .content {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-flow: row wrap;
+}
+
+.popular-products .content .box-all {
+    width: 280px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.popular-products .content .box-all .img-box {
+    width: 100%;
+    height: 290px;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popular-products .content .box-all .img-box img {
+    width: 70%;
+}
+
+.popular-products .content .box-all .title {
+    margin-top: 10px;
+}
+
+.popular-products .content .box-all .tag {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 8px;
+}
+
+.popular-products .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-products .bottom .left {
+    width: 20%;
+}
+
+.popular-products .bottom .left .img-box {
+    width: 100%;
+}
+
+.popular-products .bottom .left .img-box img {
+    width: 100%;
+}
+
+.popular-products .bottom .right {
+    width: 75%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.popular-products .bottom .right input{
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.popular-products .bottom .right .btn{
+    width: 100%;
+    height: 40px;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 全局  中尺寸显示 */
+.ms-display{
+    display: none;
 }

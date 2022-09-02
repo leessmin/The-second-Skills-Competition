@@ -48,7 +48,8 @@
     }
 
     .Men-Women,
-    .current-deal {
+    .current-deal,
+    .popular-products {
         width: 100%;
         margin: 0;
     }
@@ -71,7 +72,8 @@
     }
 
     .Men-Women .men-title h2,
-    .current-deal h2 {
+    .current-deal h2,
+    .popular-products .men-title h2 {
         font-size: 2rem;
     }
 
@@ -204,18 +206,104 @@
 
 
 
-    .current-deal{
+    .current-deal {
         width: 100%;
     }
 
-    .current-deal .mens-top{
+    .current-deal .mens-top {
         margin: 60px 0;
         justify-content: center;
     }
 
-    .current-deal .content{
+    .current-deal .content {
         width: 90% !important;
         margin: 0 auto;
         padding-top: 0;
+    }
+
+
+
+
+
+
+    .popular-products {
+        width: 90%;
+        margin: 50px auto;
+    }
+
+    .popular-products .mens-top .men-title {
+        margin: 0 auto;
+    }
+
+    .popular-products .content .box-all {
+        width: 100%;
+        text-align: center;
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .popular-products .content .box-all .img-box {
+        height: 400px;
+        background-color: #eeeeee;
+    }
+
+    .popular-products .content .box-all .img-box img {
+        width: 50%;
+    }
+
+    .popular-products .content .box-all .title h3 {
+        font-size: 2rem;
+    }
+
+    .popular-products .content .box-all .title p {
+        font-size: 1.6rem;
+        color: #646464;
+    }
+
+    .popular-products .content .box-all .tag {
+        width: 100px;
+        height: 50px;
+        font-size: 1.8rem;
+        line-height: 50px;
+    }
+
+    .popular-products .bottom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .popular-products .bottom .left {
+        width: 100%;
+    }
+
+    .popular-products .bottom .right {
+        width: 100%;
+        height: 200px;
+        display: block;
+    }
+
+    .popular-products .bottom .right h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .popular-products .bottom .right input {
+        width: 100%;
+        height: 50px;
+        font-size: 1.5rem;
+        box-sizing: border-box;
+        margin: 20px 0;
+    }
+
+    .popular-products .bottom .right .btn {
+        width: 100%;
+        height: 50px;
+        background-color: #333333;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
     }
 }
