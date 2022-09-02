@@ -1,0 +1,91 @@
+@media screen and (max-width: 768px) {
+    .top .center {
+        width: 95%;
+    }
+
+    .slideshow-center-box2,
+    .slideshow-center-box1 {
+        height: 300px;
+    }
+
+
+
+
+
+
+
+
+    .Men-Women {
+        width: 95%;
+        margin: 0 auto;
+        margin-top: 0px;
+    }
+
+    .mens-middle {
+        padding-top: 10px;
+        box-sizing: border-box;
+        height: 1750px;
+    }
+
+    .mens-middle .top .box1 .left {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    .mens-middle .top .box1 .left .left-right {
+        margin-bottom: 20px;
+    }
+
+    .mens-middle .top .box1 .left .left-left .shop {
+        width: 320px;
+        margin-bottom: 10px;
+    }
+
+    .mens-bottom {
+        flex-direction: column;
+    }
+
+    .mens-bottom .box1,
+    .mens-bottom .box2,
+    .mens-bottom .box3,
+    .mens-bottom .box4 {
+        width: 95%;
+        height: 100px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        display: flex;
+        margin: 10px auto;
+    }
+
+    .mens-bottom .box1 .content,
+    .mens-bottom .box2 .content,
+    .mens-bottom .box3 .content,
+    .mens-bottom .box4 .content {
+        width: 600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mens-bottom .box1 i,
+    .mens-bottom .box2 i,
+    .mens-bottom .box3 i,
+    .mens-bottom .box4 i {
+        font-size: 30px;
+    }
+
+    .mens-bottom .box1 p,
+    .mens-bottom .box2 p,
+    .mens-bottom .box3 p,
+    .mens-bottom .box4 p {
+        width: 500px;
+    }
+
+    .mens-middle .top .box1 .left .left-right .content,
+    .mens-middle .top .box1 .left .left-right .content01 {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,197 @@
+@media screen and (max-width: 600px) {
+    .top {
+        height: auto;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+
+    .top .center {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .slideshow .center {
+        height: 300px;
+    }
+
+    .slideshow-center-box2,
+    .slideshow-center-box1 {
+        height: 200px;
+    }
+
+    .slideshow-center-box1 .center-box01-center P,
+    .slideshow-center-box2 .center-box01-center P {
+        display: none;
+    }
+
+    .slideshow-center-box1 .center-box01-center,
+    .slideshow-center-box2 .center-box01-center {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 0;
+        box-sizing: border-box;
+    }
+
+
+
+
+
+
+
+    .mens-middle {
+        padding-top: 10px;
+        box-sizing: border-box;
+        height: 2820px;
+    }
+
+    .Men-Women {
+        width: 100%;
+        margin: 0;
+    }
+
+    .Men-Women .mens-top {
+        width: 100%;
+        height: 50px;
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mens-middle .top .box1 .left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .Men-Women .men-title h2 {
+        font-size: 2rem;
+    }
+
+    .Men-Women .men-title p {
+        font-size: 1.2rem;
+        color: #8f8f8f;
+        text-align: center;
+    }
+
+    .Men-Women .line {
+        display: none;
+    }
+
+    .mens-middle .top .box1 .left .left-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .mens-middle .top .box1 .left .left-left .shop {
+        width: 100%;
+        position: relative;
+    }
+
+    .mens-middle .top .box1 .left .left-left .shop .img-box {
+        background-color: aqua;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mens-middle .top .box1 .left .left-left .shop .img-box img {
+        width: 40%;
+    }
+
+    .mens-middle .top .box1 .left .left-right .img-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .mens-middle .top .box1 .left .left-left .shop .title {
+        margin-bottom: 10px;
+    }
+
+    .mens-middle .top .box1 .left .left-right .content .btn,
+    .mens-middle .top .box1 .left .left-right .content01 .btn {
+        margin-top: 10px;
+        width: 300px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: all 0s;
+        font-size: 1.6rem;
+
+    }
+
+    .mens-middle .top .box1 .left .left-right .content h3 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #ccc !important;
+    }
+
+    .mens-middle .top .box1 .left .left-right .content01 h3 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: black !important;
+    }
+
+    .left-right02 {
+        margin: 180px 0 !important;
+    }
+
+
+    .mens-bottom .box1,
+    .mens-bottom .box2,
+    .mens-bottom .box3,
+    .mens-bottom .box4 {
+        width: 90%;
+        min-height: 180px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        display: flex;
+        margin: 20px auto;
+        padding: 20px 20px;
+    }
+
+    .mens-bottom .box1 .content div,
+    .mens-bottom .box2 .content div,
+    .mens-bottom .box3 .content div,
+    .mens-bottom .box4 .content div {
+        width: 300px;
+        display: block;
+        margin-left: 80px;
+    }
+
+    .mens-bottom .box1 .content,
+    .mens-bottom .box2 .content,
+    .mens-bottom .box3 .content,
+    .mens-bottom .box4 .content {
+        width: 600px;
+        height: auto;
+        display: block;
+        position: relative;
+    }
+
+    .mens-bottom .box1 i,
+    .mens-bottom .box2 i,
+    .mens-bottom .box3 i,
+    .mens-bottom .box4 i {
+        font-size: 30px;
+        position: absolute;
+        top: 0px;
+    }
+
+    .mens-bottom .box1 p,
+    .mens-bottom .box2 p,
+    .mens-bottom .box3 p,
+    .mens-bottom .box4 p {
+        width: 200px !important;
+    }
+}
