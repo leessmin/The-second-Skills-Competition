@@ -182,7 +182,8 @@ body {
 
 .Men-Women,
 .current-deal,
-.popular-products {
+.popular-products,
+.new-articles {
     width: 70%;
     margin: 0 auto;
     margin-top: 80px;
@@ -580,13 +581,13 @@ body {
     justify-content: space-between;
 }
 
-.popular-products .bottom .right input{
+.popular-products .bottom .right input {
     width: 100%;
     height: 40px;
     box-sizing: border-box;
 }
 
-.popular-products .bottom .right .btn{
+.popular-products .bottom .right .btn {
     width: 100%;
     height: 40px;
     background-color: #333333;
@@ -605,9 +606,85 @@ body {
 
 
 
+.new-articles {
+    margin-bottom: 50px;
+}
+
+.new-articles .content {
+    padding: 40px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.new-articles .content .box-all {
+    width: 30%;
+    min-width: 400px;
+    height: 750px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.new-articles .content .box-all .img-box {
+    width: 100%;
+    height: 330px;
+    background-color: #d3e1fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-articles .content .box-all .img-box img {
+    width: 60%;
+}
+
+.new-articles .content .box-all .title {
+    margin-top: 20px;
+}
+
+.new-articles .content .box-all .title h3{
+    font-size: 1.4rem;
+}
+
+.new-articles .content .box-all .title p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.new-articles .content .box-all .btn {
+    width: 120px;
+    height: 40px;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.new-articles .content .box-all .btn:hover{
+    transition: all 0.8s;
+    background-color: #000;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* 全局  中尺寸显示 */
-.ms-display{
+.ms-display {
     display: none;
 }
