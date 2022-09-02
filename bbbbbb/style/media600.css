@@ -74,7 +74,8 @@
 
     .Men-Women .men-title h2,
     .current-deal h2,
-    .popular-products .men-title h2 {
+    .popular-products .men-title h2,
+    .new-articles .men-title h2 {
         font-size: 2rem;
     }
 
@@ -314,8 +315,14 @@
 
 
 
+    .new-articles {
+        margin-top: 100px;
+    }
 
-
+    .new-articles .mens-top {
+        width: 100% !important;
+        justify-content: center;
+    }
 
     .new-articles .content .box-all {
         width: 100%;
@@ -330,4 +337,93 @@
         margin-top: 20px;
         font-size: 1.2rem;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .foot {
+        width: 100%;
+        height: auto;
+        background-color: #eeeeee;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .foot .content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .foot .box01 {
+        width: 100% !important;
+    }
+
+    .foot .content .box01 p {
+        width: 100%;
+        margin: 20px 0;
+        padding-left: 0px;
+    }
+
+    .foot .content .box01 h3 {
+        padding-left: 0px;
+    }
+
+    .foot .box02 {
+        width: 100% !important;
+        min-width: 0px !important;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .foot .box03 {
+        width: 100% !important;
+        min-width: 0px !important;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .foot li {
+        width: 100% !important;
+    }
+
+    .foot .box04 {
+        width: 100% !important;
+        min-width: 0px !important;
+        margin-top: 40px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    .mens-top .men-title p{
+        font-size: 22px;
+    }
+
 }

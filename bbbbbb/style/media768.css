@@ -172,6 +172,70 @@
 
 
 
+
+
+    .foot {
+        width: 100%;
+        height: 600px;
+        background-color: #eeeeee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .foot .content {
+        width: 100%;
+    }
+
+    .foot .box01 {
+        width: 100% !important;
+    }
+
+    .foot .content .box01 p {
+        width: 90%;
+        margin: 20px 0;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+
+    .foot .content .box01 h3{
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+
+    .foot .box02 {
+        width: 20% !important;
+        min-width: 0px !important;
+    }
+
+    .foot .box03 {
+        width: 30% !important;
+        min-width: 0px !important;
+    }
+
+    .foot .box04 {
+        width: 30% !important;
+        min-width: 0px !important;
+        margin-top: 40px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* 全局  中尺寸显示 */
     .ms-display {
         display: inline;

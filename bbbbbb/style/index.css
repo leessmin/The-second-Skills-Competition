@@ -8,6 +8,10 @@ body {
     overflow: overlay;
 }
 
+ul {
+    list-style-type: none;
+}
+
 /* ::-webkit-scrollbar {
     width: 0 !important
 } */
@@ -645,7 +649,7 @@ body {
     margin-top: 20px;
 }
 
-.new-articles .content .box-all .title h3{
+.new-articles .content .box-all .title h3 {
     font-size: 1.4rem;
 }
 
@@ -667,11 +671,122 @@ body {
     cursor: pointer;
 }
 
-.new-articles .content .box-all .btn:hover{
+.new-articles .content .box-all .btn:hover {
     transition: all 0.8s;
     background-color: #000;
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+.foot {
+    width: 100%;
+    height: 350px;
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot .content {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.foot .content .box-all {
+    width: 25%;
+    min-width: 336px;
+    height: 80%;
+}
+
+.foot .content .box01 p {
+    width: 280px;
+    margin: 20px 0;
+}
+
+.foot .content .box02 ul,
+.foot .content .box03 ul {
+    margin: 20px 0;
+}
+
+.foot .content .box02 li,
+.foot .content .box03 li {
+    width: 80%;
+    height: 40px;
+    /* background-color: aqua; */
+    border-bottom: 1px solid #000;
+    line-height: 40px;
+}
+
+.foot .content .box04 ul {
+    margin: 20px 0;
+}
+
+.foot .content .box04 ul li i {
+    font-size: 30px;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.foot .content .box04 ul li p {
+    color: #666666;
+    margin-bottom: 15px;
+}
+
+.foot .content .box04 ul li h3 {
+    margin-bottom: 10px;
+}
+
+.foot .hover-li:hover {
+    color: red !important;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.foot-info {
+    width: 100%;
+    height: 30px;
+    background-color: #bbbbbb;
+    text-align: center;
+    line-height: 30px;
+}
+
+
+
+
+
+
+
+
+
 
 
 
