@@ -293,7 +293,9 @@
         // 初始化网格
         initGrid()
         // 监听生成按钮
-        document.querySelector("#create").addEventListener("click", createMaze)
+        document.querySelector("#create").addEventListener("click", function () {
+            createMaze();
+        })
         // 监听输入框 行
         document.querySelector("#row").addEventListener("change", function () {
             if (this.value > 30) {
@@ -332,6 +334,13 @@
                 isRun = 0;
             }
 
+        })
+        // 监听重置按钮
+        document.querySelector("#reset").addEventListener("click", function () {
+            // 初始化网格
+            initGrid()
+            // 重置数据
+            init()
         })
     </script>
 </body>
