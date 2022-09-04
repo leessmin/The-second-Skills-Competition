@@ -20,7 +20,7 @@
     <script>
         var can = document.getElementById("canvas").getContext("2d");//获取画布
         var iv = 20;//interval间隔
-        var lie = 10;//lie * lie 的地图 格子的数量
+        var lie = 20;//lie * lie 的地图 格子的数量
         var tree = [];//父亲
         var high = [];//树高
         var flag = [];//是否联通
@@ -62,15 +62,13 @@
 
 
         // 创建迷宫
-        // let endPoint = parseInt(Math.random() * lie);//最后一行随机一个终点
-        let endPoint = 2
+        let endPoint = parseInt(Math.random() * lie);//最后一行随机一个终点
+        // let endPoint = 2
         endPoint = (lie - 1) * lie + endPoint;
         // find(0)
         // find(endPoint)
         while (find(0) != find(endPoint))//起点与终点没有路
         {
-
-
             var point = parseInt(Math.random() * lie * lie);//随机一个点
             var nei = neighbor(point);//获得邻居
             if (find(point) != find(nei))//没连在一起
@@ -212,7 +210,8 @@
             {
                 drawRect(nx, ny, false);//清除方块
                 //if(lie<50) lie+=2;//迷宫难度加大,最大50*50
-                main();//重新开始
+                // main();//重新开始
+                alert('通关')
             }
         }
     </script>

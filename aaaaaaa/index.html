@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到幻想迷宫游戏</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            max-width: 1900px;
+            overflow: hidden;
+        }
+
+        .center {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left {
+            width: 50%;
+        }
+
+        .left canvas {
+            border: 1px solid #000;
+            /* width: 600px; */
+            /* height: 600px; */
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 0.8rem;
+        }
+
+        input {
+            width: 100px;
+            height: 40px;
+        }
+
+        .right {
+            width: 50%;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="left">
+            <h1>欢迎来到幻想迷宫游戏</h1>
+            <canvas width="600" height="600"></canvas>
+        </div>
+        <div class="right">
+            <button id="reset">重置</button>
+            <input id="row" type="number" placeholder="行">
+            <input id="column" type="number" placeholder="列">
+            <button id="create">生成</button>
+            <button id="play">播放</button>
+            <button>自动播放</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        //  行   列   // 默认网格行列为10
+        let row = 15, column = 15;
+        // 方块 间距 大小  默认20
+        let space = 20;
+        // 获取canvas元素
+        let canvas = document.querySelector("canvas");
+        // 获取canvas画布
+        let ctx = canvas.getContext("2d");
+        let tree = [];//领导
+        let high = [];//树高
+        let isRun = 0;//游戏是否在运行  1正在运行，0暂停中
+        let isCreate = 0;//地图是否生成 1生成 0未生成
+        let flag = [];//是否联通
+        let endPoint;//终点
+        let nx = 0, ny = 0;//迷宫小人起点固定左上角
+
+
+
+        // 初始化数据
+        function init() {
+            nx = 0, ny = 0;//迷宫小人起点固定左上角
+            for (var i = 0; i < row * column; i++)//初始化
+            {
+                tree[i] = i
+                high[i] = 1;//初始每个节点的父亲都是自己，树高为1
+                flag[i] = [];
+                for (var j = 0; j < row * column; j++) flag[i][j] = 0;//都不联通
+            }
+        }
+
+
+
+        // 创建迷宫
+        function createMaze() {
+            // 初始化数据
+            init()
+            // 初始化网格
+            initGrid()
+            // 创建迷宫
+            // let endPoint = column;//最后一行随机一个终点
+            endPoint = column - 1;
+            endPoint = (column - 1) * row + endPoint;
+            // find(0)
+            // find(endPoint)
+            while (find(0) != find(endPoint))//起点与终点没有路
+            {
+                let point = parseInt(Math.random() * row * column);//随机一个点
+                let nei = neighbor(point);//获得邻居
+                if (find(point) != find(nei))//没连在一起
+                {
+                    flag[point][nei] = flag[nei][point] = 1;//两个联通
+                    erase(point, nei);//擦除两个格子中间的线
+                    unite(point, nei);//合并
+                }
+            }
+        }
+
+
+
+        function neighbor(a)//返回一个邻居用来联通 参数为一维坐标 下标从0开始
+        {
+            // y坐标=格子编号/格子数量 商     x坐标=格子编号%格子数量 余数
+            var y = parseInt(a / column), x = a % row;//行列坐标
+            var have = new Array();//邻居数组
+            if (y - 1 >= 0)//上
+                have.push(a - column);
+            if (y + 1 < column)//下
+                have.push(a + column);
+            if (x - 1 >= 0)//左
+                have.push(a - 1);
+            if (x + 1 < row)//右
+                have.push(a + 1);
+            var ret = parseInt(Math.random() * have.length);//随机选一个邻居
+            return have[ret];
+        }
+
+
+
+        function find(a)//找根//不能路径压缩！！！！
+        {
+            if (tree[a] != a) {
+                return find(tree[a]);
+            }
+            return a;
+        }
+
+
+
+        function erase(a, b)//擦除方格间的线 参数为两个方格的一维坐标 下标从0开始
+        {
+            var y1 = parseInt(a / row), x1 = a % column, y2 = parseInt(b / row), x2 = b % column;
+            var x = (x1 + x2) / 2;
+            var y = (y1 + y2) / 2;
+            if (x1 != x2)//擦上下
+                ctx.clearRect(x * space + space / 2 - 1, y * space + 1, 2, space - 2);
+            else//擦左右
+                ctx.clearRect(x * space + 1, y * space + space / 2 - 1, space - 2, 2);
+        }
+
+
+
+        function unite(a, b)//合并 选出大佬
+        {
+            a = find(a), b = find(b);
+            if (high[a] > high[b])//矮树合并到高树
+            {
+                high[a] += high[b];
+                tree[b] = a;
+            }
+            else {
+                high[b] += high[a];
+                tree[a] = b;
+            }
+        }
+
+
+
+        // 初始网格函数
+        function initGrid() {
+            // ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //重置canvas的大小，清空画布     注:由于clearRect未知原因无法清除，只能通过重新给canvas设置宽:高来实现清除操作
+            canvas.height = canvas.height;
+            // 线的颜色
+            ctx.strokeStyle = "#636e72";
+            // 列
+            for (let i = 0; i <= column; i++) {
+                // 起始位置
+                ctx.moveTo(space * i, 0);
+                // 终点
+                ctx.lineTo(space * i, row * space);
+                // 画线
+                ctx.stroke()
+            }
+            // 行
+            for (let i = 0; i <= row; i++) {
+                // 起始位置
+                ctx.moveTo(0, space * i);
+                // 终点
+                ctx.lineTo(column * space, space * i);
+                // 画线
+                ctx.stroke()
+            }
+        }
+
+
+
+        function drawRect(x, y, flag)//画方块 参数为方块二维坐标 和 是否填充，0开始
+        {
+            var newSpace = space / 6;//上下左右留 1/6 的空间，不取整
+            var dx = x * space + newSpace, dy = y * space + newSpace;//坐标转像素
+            if (flag) ctx.fillRect(dx, dy, newSpace * 4, newSpace * 4);//填充则画方块
+            else ctx.clearRect(dx - 1, dy - 1, newSpace * 4 + 2, newSpace * 4 + 2);//不填充则清除方块，稍微清大一点，避免小数导致的边界残留
+        }
+
+
+
+        function go()//把起点和终点画出来，任务完成
+        {
+            ctx.fillStyle = 'black';//画笔为黑色
+            drawRect(0, 0, true);//画一个黑色方块，位置0，0
+            ctx.fillStyle = 'red';//画笔为红色
+            drawRect(endPoint % row, parseInt(endPoint / column), true);//画一红色方块，位置为终点位置
+            ctx.fillStyle = 'block';//重置画笔为黑色
+            window.addEventListener('keydown', listenKeyDown);//窗口监听
+        }
+
+
+
+        function listenKeyDown(e)//按键监听
+        {
+            if (isRun == 0) return;//当游戏没有开始时，不响应按键
+            var key = e.keyCode ? e.keyCode : e.which;
+            var tx = ny * row + nx;
+            press(key);
+        }
+
+
+
+        function press(key) {
+            var tx = ny * row + nx;
+            if (key == 37 && nx > 0 && flag[tx][tx - 1] == 1)//left
+            {
+                drawRect(nx, ny, false);//清除当前方块
+                drawRect(--nx, ny, true);//左边格子画一个方块，表示当前方块往左移
+            }
+            else if (key == 38 && ny > 0 && flag[tx][tx - row] == 1)//up
+            {
+                drawRect(nx, ny, false);
+                drawRect(nx, --ny, true);
+            }
+            else if (key == 39 && nx < row - 1 && flag[tx][tx + 1] == 1)//right
+            {
+                drawRect(nx, ny, false);
+                drawRect(++nx, ny, true);
+            }
+            else if (key == 40 && ny < row - 1 && flag[tx][tx + row] == 1)//down
+            {
+                drawRect(nx, ny, false);
+                drawRect(nx, ++ny, true);
+            }
+            if (ny * row + nx == endPoint)//走到终点
+            {
+                drawRect(nx, ny, false);//清除方块
+                //if(row<50) row+=2;//迷宫难度加大,最大50*50
+                // main();//重新开始
+                isRun = 0;
+                nx = 0, ny = 0;//迷宫小人起点固定左上角
+                alert('通关');
+            }
+        }
+
+
+
+
+
+
+
+        // 初始化网格
+        initGrid()
+        // 监听生成按钮
+        document.querySelector("#create").addEventListener("click", createMaze)
+        // 监听输入框 行
+        document.querySelector("#row").addEventListener("change", function () {
+            if (this.value > 30) {
+                alert("兄弟这个难度超出人类极限了");
+                this.value = 10;
+                row = 10
+                return null;
+            }
+            // 将输入框的结果赋值
+            row = parseInt(this.value);
+            // 重新初始化网格
+            initGrid()
+        })
+        // 监听输入框 列
+        document.querySelector("#column").addEventListener("change", function () {
+            if (this.value > 30) {
+                alert("兄弟这个难度超出人类极限了");
+                this.value = 10;
+                column = 10;
+                return null;
+            }
+            // 将输入框的结果赋值
+            column = parseInt(this.value);
+            // 重新初始化网格
+            initGrid()
+        })
+        // 监听播放/重新开始按钮
+        document.querySelector("#play").addEventListener("click", function () {
+            console.log(isRun);
+            if (isRun == 0) {
+                this.innerHTML = "重新开始"
+                isRun = 1;
+                go();
+            } else {
+                this.innerHTML = "播放"
+                isRun = 0;
+            }
+
+        })
+    </script>
+</body>
+
+</html>
