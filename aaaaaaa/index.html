@@ -61,12 +61,12 @@
             <canvas width="600" height="600"></canvas>
         </div>
         <div class="right">
-            <button id="reset">重置</button>
+            <button id="reset" disabled>重置</button>
             <input id="row" type="number" placeholder="行">
             <input id="column" type="number" placeholder="列">
             <button id="create">生成</button>
-            <button id="play">播放</button>
-            <button>自动播放</button>
+            <button id="play" disabled>播放</button>
+            <button id="autoPlay">自动播放</button>
         </div>
     </div>
 
@@ -88,6 +88,8 @@
         let flag = [];//是否联通
         let endPoint;//终点
         let nx = 0, ny = 0;//迷宫小人起点固定左上角
+        let isReset = 0; //重置按钮是否可以点击
+        let isPlay = 0;//播放按钮是否可以被点击
 
 
 
@@ -286,6 +288,176 @@
 
 
 
+        function auto() {
+            isRun = !isRun;
+            if (!isRun) return;
+            var st = ny * row + nx, ed = endPoint;
+            var f = [];//是否访问
+            for (var i = 0; i < row * column; i++) f[i] = 0;//全部未访问
+            var xx = dfs(st, f);
+            if (xx == true) main();
+        }
+
+
+
+        async function dfs(a, f)//参数为 当前位置 与 flag标记数组
+        {
+            //var sta=Date.now();
+            var step = 1;
+            //var max=bfs(-1)+5;
+            var ans = bfs(-1);
+            //console.log(ans);
+            while (ans.length != 0 && isRun) {
+                await sleep(50);
+                var x = ans.pop();
+                //console.log("now x="+x+" a="+a);
+                if (x == a - row) press(38);
+                else if (x == a + row) press(40);
+                else if (x == a + 1) press(39);
+                else if (x == a - 1) press(37);
+                else continue;
+                a = x;
+            }
+            //console.log("out, ans.length="+ans.length);
+            return true;
+            //var max=214748364;
+            while (true) {
+                await sleep(100);
+                var y = parseInt(a / row), x = a % row;//行列坐标
+                //console.log(x+" "+y+"**"+f+"??"+step+" "+a);
+                if (y - 1 >= 0 && f[a - row] == 0 && flag[a][a - row] == 1 && step < max)//up 38
+                {
+                    f[a] = step;
+                    step++;
+                    if (a - column == endPoint) break;//走到了终点，返回
+                    a -= column;
+                    press(38);//模拟按下方向上键
+                    continue;
+                }
+                if (y + 1 < column && f[a + row] == 0 && flag[a][a + row] == 1 && step < max)//下 40
+                {
+                    f[a] = step;
+                    step++;
+                    if (a + column == endPoint) break;//走到了终点，返回
+                    a += row;
+                    press(40);//模拟按下方向上键
+                    continue;
+                }
+                if (x - 1 >= 0 && f[a - 1] == 0 && flag[a][a - 1] == 1 && step < max)//左 37
+                {
+                    f[a] = step;
+                    step++;
+                    if (a - 1 == endPoint) break;
+                    a -= 1;
+                    press(37);
+                    continue;
+                }
+                if (x + 1 < column && f[a + 1] == 0 && flag[a][a + 1] == 1 && step < max)//右 39
+                {
+                    f[a] = step;
+                    step++;
+                    if (a + 1 == endPoint) break;
+                    a += 1;
+                    press(39);
+                    continue;
+                }
+                if (f[a + row] == step - 1)//
+                {
+                    f[a] = -1;
+                    a += row;
+                    step--;
+                    press(40);
+                    continue;
+                }
+                if (f[a - row] == step - 1) {
+                    f[a] = -1;
+                    a -= row;
+                    step--;
+                    press(38);
+                    continue;
+                }
+                if (f[a + 1] == step - 1) {
+                    f[a] = -1;
+                    a += 1;
+                    step--;
+                    press(39);
+                    continue;
+                }
+                if (f[a - 1] == step - 1) {
+                    f[a] = -1;
+                    a -= 1;
+                    step--;
+                    press(37);
+                    continue;
+                }
+            }
+            //var end=Date.now();
+            //total_use_time+=end-sta;
+            //console.log("use time: "+(end-sta));
+            if (a + 1 == endPoint) press(39);
+            else if (a - 1 == endPoint) press(37);
+            else if (a + column == endPoint) press(40);
+            else press(38);
+        }
+
+
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms))
+        }
+
+
+
+        function bfs(flag2)//bfs路径记录//因为是有解的迷宫，所以怎么走都不可能无解，故直接bfs不必考虑找不到终点
+        {
+            var st = ny * row + nx, ed = endPoint;
+            var que = new Array();//手动实现队列
+            var f = [];//是否访问
+            var ans = [];//路径记录
+            for (var i = 0; i < row * column; i++) f[i] = 0, ans[i] = -1;//全部未访问
+            que.push(st);
+            var top = 0;//队首
+            ctx.fillStyle = '#F6E25B';
+            while (top != que.length)//队列非空
+            {
+                var a = que[top++];//弹出队首
+                if (f[a] == 1) continue;
+                f[a] = 1;//标记被访问过了
+                if (a == endPoint) break;
+                var y = parseInt(a / row), x = a % row;//行列坐标
+                if (y - 1 >= 0 && f[a - row] == 0 && flag[a][a - row] == 1)//上
+                    que.push(a - row), ans[a - row] = a;
+                if (y + 1 < row && f[a + row] == 0 && flag[a][a + row] == 1)//下
+                    que.push(a + row), ans[a + row] = a;
+                if (x - 1 >= 0 && f[a - 1] == 0 && flag[a][a - 1] == 1)//左
+                    que.push(a - 1), ans[a - 1] = a;
+                if (x + 1 < column && f[a + 1] == 0 && flag[a][a + 1] == 1)//右
+                    que.push(a + 1), ans[a + 1] = a;
+            }
+            var tmp = endPoint;//打印路径
+            var num = 0;
+            var ret = new Array();
+            ret.push(tmp);
+            while (ans[tmp] != st) {
+                tmp = ans[tmp];
+                ret.push(tmp);
+                num++;
+                if (flag2 != -1)
+                    drawRect(tmp % row, parseInt(tmp / row), flag2);
+            }
+            ctx.fillStyle = 'black';
+            if (flag2 == -1)
+                return ret;
+            //return num;
+        }
+
+
+
+
+
+
+
+
 
 
 
@@ -295,6 +467,12 @@
         // 监听生成按钮
         document.querySelector("#create").addEventListener("click", function () {
             createMaze();
+            // 启用重置按钮
+            isReset = 1;
+            document.querySelector("#reset").removeAttribute("disabled");
+            // 启用播放按钮
+            isPlay = 1;
+            document.querySelector("#play").removeAttribute("disabled");
         })
         // 监听输入框 行
         document.querySelector("#row").addEventListener("change", function () {
@@ -324,15 +502,9 @@
         })
         // 监听播放/重新开始按钮
         document.querySelector("#play").addEventListener("click", function () {
-            console.log(isRun);
-            if (isRun == 0) {
-                this.innerHTML = "重新开始"
-                isRun = 1;
-                go();
-            } else {
-                this.innerHTML = "播放"
-                isRun = 0;
-            }
+            this.innerHTML = "重新开始"
+            isRun = 1;
+            go();
 
         })
         // 监听重置按钮
@@ -341,6 +513,13 @@
             initGrid()
             // 重置数据
             init()
+            // 关闭播放按钮
+            isPlay = 0;
+            document.querySelector("#play").setAttribute("disabled", "");
+        })
+
+        document.querySelector("#autoPlay").addEventListener("click", function () {
+            auto()
         })
     </script>
 </body>
